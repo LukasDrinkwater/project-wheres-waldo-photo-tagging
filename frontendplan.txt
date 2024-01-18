@@ -1,0 +1,8 @@
+app.jsx
+----chracterBoardComponent
+----------characterComponent show what characters need to be 
+          found and if they have been found.
+----pictureComponent
+--------render the picture
+--------component that is rendered when the user clicks
+--------
