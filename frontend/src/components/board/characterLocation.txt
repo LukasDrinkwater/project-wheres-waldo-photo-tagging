@@ -2,3 +2,15 @@ waldo
 wenda
 wizzard
 odlaw
+
+Yes. 
+
+To illustrate, let's say your image's original dimensions are 2000px 
+by 2000px. When the div's height is 1000px, the image's height becomes
+ 1000px (since it scales to the div's height). If you position a character
+  at 10%/67%, this would translate to 100px (10%) and 670px (67%). 
+
+When the div' s height increases to 1500px, the image's height becomes 
+1500px, and the character's position would adjust to 10% of 1500px (which is 150px). 
+
+As you can see, the percentage values stay the same despite the change in pixel values.
