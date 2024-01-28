@@ -1,9 +1,11 @@
-waldo
-wenda
-wizzard
-odlaw
+waldo x 882 y 974
+wenda x 894 y 778
+wizzard x 1342 y 988
+odlaw x 1204 y 1222
 
-Yes. 
+60px height +/- 30px
+20px width +/- 10px
+
 
 To illustrate, let's say your image's original dimensions are 2000px 
 by 2000px. When the div's height is 1000px, the image's height becomes
