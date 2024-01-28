@@ -1,5 +1,5 @@
 import characters from "../../assets/images/characters.png";
-import { getBaseImageUrl } from "./utils";
+import { getBaseImageUrl } from "../../utils";
 
 function CharactersToFind({ characterStatus, setCharacterStatus }) {
   const baseImageUrl = getBaseImageUrl();
