@@ -6,6 +6,9 @@ const imageController = require("../controllers/imageController");
 // test
 router.get("/test", imageController.test);
 
+// GET all characters
+router.get("/allCharacters", imageController.all_Characters_get);
+
 // GET specific image
 router.get("/:imageName", imageController.single_image_get);
 
