@@ -10,14 +10,18 @@ exports.test = asyncHandler(async (req, res, next) => {
   res.json({ message: "hey there" }).statusCode(200).send();
 });
 
+// GET all character images
+exports.all_Characters_get = asyncHandler(async (req, res, next) => {});
+
 // GET specific image
 exports.single_image_get = asyncHandler(async (req, res, next) => {
   const imageToGet = req.params.imageName;
   const imageUrl = `http://localhost:3000/${path.join("images", imageToGet)}`;
+  console.log(imageUrl);
 
   const imagePath = path.join(__dirname, "../public/images", imageToGet);
   const dimensions = imageSize(imagePath);
-  console.log(dimensions);
+  // console.log(dimensions);
   res.json({ imageUrl, dimensions }).sendStatus(200);
 });
 
@@ -26,25 +30,42 @@ exports.character_guess_post = asyncHandler(async (req, res, next) => {
   // get info from request
   const imageToGet = req.params.imageName;
   const character = req.body.character;
-  const pixelXPercentGuess = req.body.pixelX;
-  const pixelYPercentGuess = req.body.pixelY;
-
-  // get character from DB
-  const dbCharacter = await Character.find({ character: character }).exec();
-
+  // const pixelXPercentGuess = req.body.pixelX;
+  // const pixelYPercentGuess = req.body.pixelY;
   // get size of original image
   const imagePath = path.join(__dirname, "../public/images", imageToGet);
   const dimensions = imageSize(imagePath);
+  const pixelXGuess = Math.round((req.body.pixelX / 100) * dimensions.width);
+  const pixelYGuess = Math.round((req.body.pixelY / 100) * dimensions.height);
+
+  // get character from DB
+  const dbCharacter = await Character.findOne({ character: character }).exec();
 
   // work out if its a match.
-  const pixelXGuess = Math.round((pixelXPercentGuess / 100) * dimensions.width);
-  const pixelYGuess = Math.round(
-    (pixelYPercentGuess / 100) * dimensions.height
-  );
 
-  // console.log(imageToGet, character, pixelXGuess, pixelYGuess);
-  console.log(pixelXGuess, pixelYGuess);
-  res.sendStatus(200);
+  const checkRange = (xGuess, yGuess, xTarget, yTarget) => {
+    const xCheck = Math.abs(xGuess - xTarget);
+    const yCheck = Math.abs(yGuess - yTarget);
+    return xCheck <= 20 && yCheck <= 20;
+  };
+
+  if (
+    checkRange(pixelXGuess, pixelYGuess, dbCharacter.pixelX, dbCharacter.pixelY)
+  ) {
+    // update character to found and save it.
+    dbCharacter.found = true;
+    try {
+      const updatedCharacter = await dbCharacter.save();
+    } catch (error) {
+      console.log("Error updating character found property", error);
+    }
+
+    console.log("character found");
+    res.json({ message: "found" }).sendStatus(200);
+  } else {
+    console.log("not found");
+    res.json({ message: "not found" }).sendStatus(200);
+  }
 });
 
 // To illustrate, let's say your image's original dimensions are 2000px
