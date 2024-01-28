@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 
 import Popup from "./Popup";
 
-function ImageComponent() {
-  const [showPopup, setShowPopup] = useState(true);
+function ImageComponent({ characterStatus, setCharacterStatus }) {
+  const [showPopup, setShowPopup] = useState(false);
   // cursorPosition for location of popup
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   // userpixelPosition for where the user has clicked on the image
@@ -16,18 +16,16 @@ function ImageComponent() {
     height: 0,
   });
   const [wheresWaldoImage, setWheresWaldoImage] = useState();
-  const [wheresWaldoImageSize, setWheresWaldoImageSize] = useState({
-    x: 0,
-    y: 0,
-  });
+
   const [error, setError] = useState("");
 
   useEffect(() => {
-    console.log(wheresWaldoImageSize);
+    // console.log(wheresWaldoImageSize);
   }, [userPixelPosition, wheresWaldoImage]);
 
   const handleClick = (event) => {
     event.stopPropagation();
+    setShowPopup(!showPopup);
     // nativeEvent.offset is relative to the div
     // for getting the pixel, but doesnt work for setting the popup location
     const xPixel = event.nativeEvent.offsetX;
@@ -38,13 +36,11 @@ function ImageComponent() {
     // calculate % value
     const widthPercent = (xPixel / width) * 100;
     const heightPercent = (yPixel / height) * 100;
-    // console.log(widthPercent, heightPercent);
-
+    // get cursor posision for setting popup location
     const x = event.clientX;
     const y = event.clientY;
-    // console.log(x, y);
+
     setCursorPosition({ x, y });
-    // setUserPixelPosition({ xPixel, yPixel });
     setUserPixelPercentPosition({ width: widthPercent, height: heightPercent });
   };
 
@@ -67,10 +63,6 @@ function ImageComponent() {
         if (response.ok) {
           const data = await response.json();
           setWheresWaldoImage(data.imageUrl);
-          setWheresWaldoImageSize({
-            width: data.dimensions.width,
-            height: data.dimensions.height,
-          });
         }
       } catch (error) {
         setError(error.message);
@@ -90,6 +82,8 @@ function ImageComponent() {
             setShowPopup={setShowPopup}
             userPixelPosition={userPixelPosition}
             userPixelPercentPosition={userPixelPercentPosition}
+            characterStatus={characterStatus}
+            setCharacterStatus={setCharacterStatus}
           />
         )}
       </div>
