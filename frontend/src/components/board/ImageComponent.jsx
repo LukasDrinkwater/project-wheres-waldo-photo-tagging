@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getBaseImageUrl } from "../../utils.jsx";
-import {}
 
 // import wheresWaldoImage from "../../assets/images/whereswaldo2.png";
 
