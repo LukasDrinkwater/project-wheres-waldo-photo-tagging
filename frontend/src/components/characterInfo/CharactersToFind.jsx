@@ -1,13 +1,15 @@
 import characters from "../../assets/images/characters.png";
+import { getBaseImageUrl } from "./utils";
 
 function CharactersToFind({ characterStatus, setCharacterStatus }) {
+  const baseImageUrl = getBaseImageUrl();
   return (
     <>
       <div className="charactersToFind">
         {characterStatus.waldo}
         <div className={`character ${characterStatus.waldo ? "found" : ""}`}>
           <img
-            src="http://localhost:3000/images/waldo.png"
+            src={`${baseImageUrl}/waldo.png`}
             alt="Drawing of the character Wally"
           />
           <p>Waldo</p>
