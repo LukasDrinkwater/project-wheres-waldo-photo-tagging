@@ -38,4 +38,4 @@ const prefillData = async () => {
 
 // const UserModel = require("./models/user"); // Replace with your actual model
 // await UserModel.create({ username: "testuser", password: "testpassword" });
-module.exorts = initialiseMongoServer;
+module.exports = initialiseMongoServer;
