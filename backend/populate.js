@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const Characters = require("./models/characters");
+require("dotenv").config();
+
+const mongoDB = process.env.MONGODB_STRING;
 
 // Connect to mongo db
-mongoose.connect(
-  "mongodb+srv://Lukas:Dolomite17@cluster0.5xartib.mongodb.net/wheres_waldo?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // waldo x 882 y 974
 // wenda x 894 y 778
