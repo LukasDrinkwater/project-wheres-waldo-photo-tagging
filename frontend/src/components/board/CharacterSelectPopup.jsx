@@ -1,13 +1,21 @@
+import { useState } from "react";
+
 const imageName = "whereswaldo2.png";
 
-function CharacterSelect({ userPixelPercentPosition }) {
+function CharacterSelect({
+  userPixelPercentPosition,
+  characterStatus,
+  setCharacterStatus,
+}) {
+  const [wrongGuessPulse, setWrongGuessPulse] = useState(false);
+
   const stopClickPropagation = (event) => {
     event.stopPropagation();
   };
 
   const handButtonClick = async (e) => {
     e.preventDefault();
-    const character = e.target.value;
+    const character = e.target.textContent;
 
     try {
       const response = await fetch(
@@ -29,26 +37,71 @@ function CharacterSelect({ userPixelPercentPosition }) {
       );
 
       if (response.ok) {
-        // character found do something
+        const data = await response.json();
+        if (data.message === "found") {
+          // character found, update character to found in local
+          const newCharacterStatus = {
+            ...characterStatus,
+            [character.toLowerCase()]: true,
+          };
+          setCharacterStatus(newCharacterStatus);
+        } else {
+          // add a class that is a pulse of red for 1 second
+          setWrongGuessPulse(true);
+          setTimeout(() => {
+            setWrongGuessPulse(false);
+          }, 1000);
+        }
       }
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <>
       <div className="characterSelect" onClick={stopClickPropagation}>
-        <div className="characterName">
-          <button onClick={handButtonClick}>Waldo</button>
+        <div
+          className={`characterName ${characterStatus.waldo ? "found" : ""}
+          
+          `}
+        >
+          <button
+            className={`${wrongGuessPulse ? "redPulse" : ""}`}
+            onClick={handButtonClick}
+          >
+            Waldo
+          </button>
         </div>
-        <div className="characterName">
-          <button>Wenda</button>
+        <div
+          className={`characterName ${characterStatus.wenda ? "found" : ""}`}
+        >
+          <button
+            className={`${wrongGuessPulse ? "redPulse" : ""}`}
+            onClick={handButtonClick}
+          >
+            Wenda
+          </button>
         </div>
-        <div className="characterName">
-          <button>Wizzard</button>
+        <div
+          className={`characterName ${characterStatus.wizzard ? "found" : ""}`}
+        >
+          <button
+            className={`${wrongGuessPulse ? "redPulse" : ""}`}
+            onClick={handButtonClick}
+          >
+            Wizzard
+          </button>
         </div>
-        <div className="characterName">
-          <button>Odlaw</button>
+        <div
+          className={`characterName ${characterStatus.odlaw ? "found" : ""}`}
+        >
+          <button
+            className={`${wrongGuessPulse ? "redPulse" : ""}`}
+            onClick={handButtonClick}
+          >
+            Odlaw
+          </button>
         </div>
       </div>
     </>
