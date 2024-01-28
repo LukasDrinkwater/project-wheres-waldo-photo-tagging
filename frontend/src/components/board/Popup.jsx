@@ -4,7 +4,12 @@ import "./popup.css";
 
 import CharacterSelect from "./CharacterSelectPopup";
 
-function Popup({ cursorPosition, userPixelPercentPosition }) {
+function Popup({
+  cursorPosition,
+  userPixelPercentPosition,
+  characterStatus,
+  setCharacterStatus,
+}) {
   const popupRef = useRef(null);
 
   useEffect(() => {
@@ -23,7 +28,11 @@ function Popup({ cursorPosition, userPixelPercentPosition }) {
   return (
     <div className="popup" ref={popupRef}>
       {/* <div className="popupInner"> */}
-      <CharacterSelect userPixelPercentPosition={userPixelPercentPosition} />
+      <CharacterSelect
+        userPixelPercentPosition={userPixelPercentPosition}
+        characterStatus={characterStatus}
+        setCharacterStatus={setCharacterStatus}
+      />
       {/* </div> */}
     </div>
   );
