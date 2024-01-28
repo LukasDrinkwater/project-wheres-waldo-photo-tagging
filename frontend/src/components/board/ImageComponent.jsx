@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import { getBaseImageUrl } from "../../utils.jsx";
+import {}
 
 // import wheresWaldoImage from "../../assets/images/whereswaldo2.png";
 
 import Popup from "./Popup";
 
 function ImageComponent({ characterStatus, setCharacterStatus }) {
+  const baseImageUrl = getBaseImageUrl();
   const [showPopup, setShowPopup] = useState(false);
   // cursorPosition for location of popup
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -74,7 +77,10 @@ function ImageComponent({ characterStatus, setCharacterStatus }) {
   return (
     <>
       <div className="wheresWaldoImage" onClick={handleClick}>
-        <img src={wheresWaldoImage} alt="image of a wheres waldo game" />
+        <img
+          src={`${baseImageUrl}/whereswaldo2.png`}
+          alt="image of a wheres waldo game"
+        />
 
         {showPopup && (
           <Popup
