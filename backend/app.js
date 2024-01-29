@@ -25,22 +25,35 @@ console.log(mongoose.connection.readyState);
 // Middleware setup
 app.use(logger("dev"));
 app.use(express.json());
-app.use(cors());
-// app.use(
-//   //cors is needed to allow requests from the React front end
-//   cors({
-//     origin: [
-//       "http://localhost:5173",
-//       "https://poetic-alfajores-d4b387.netlify.app",
-//       "https://poetic-alfajores-d4b387.netlify.app/",
-//     ],
-//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//     // credentials: true,
-//     allowedHeaders: ["Content-Type", "Authorization"],
-//   })
-// );
+// app.use(cors());
+// CORS middleware
+const allowCrossDomain = (req, res, next) => {
+  res.header(`Access-Control-Allow-Origin`, `*`);
+  res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
+  res.header(`Access-Control-Allow-Headers`, `Content-Type`);
+  res.header("your-mum", "toby");
+  next();
+};
+
+app.use(allowCrossDomain);
+
+app.use(
+  //cors is needed to allow requests from the React front end
+  cors({
+    // origin: [
+    //   "http://localhost:5173",
+    //   "https://poetic-alfajores-d4b387.netlify.app",
+    //   "https://poetic-alfajores-d4b387.netlify.app/",
+    // ],
+    // origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    // credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
+// app.use()
 
 // Route setup
 app.use("/image", imageRouter);
