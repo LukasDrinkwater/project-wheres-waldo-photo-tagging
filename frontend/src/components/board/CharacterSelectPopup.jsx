@@ -26,6 +26,7 @@ function CharacterSelect({
         `${baseUrl}image/${imageName}/characterPick`,
         {
           mode: "cors",
+          credentials: "include",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
