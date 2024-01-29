@@ -25,21 +25,21 @@ console.log(mongoose.connection.readyState);
 // Middleware setup
 app.use(logger("dev"));
 app.use(express.json());
-// app.use(cookieParser());
+app.use(cookieParser());
 
-// app.use(
-//   //cors is needed to allow requests from the React front end
-//   cors({
-//     origin: [
-//       "http://localhost:5173",
-//       "https://poetic-alfajores-d4b387.netlify.app",
-//       "https://poetic-alfajores-d4b387.netlify.app/",
-//     ],
-//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//     credentials: true,
-//     allowedHeaders: ["Content-Type", "Authorization"],
-//   })
-// );
+app.use(
+  //cors is needed to allow requests from the React front end
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://poetic-alfajores-d4b387.netlify.app",
+      "https://poetic-alfajores-d4b387.netlify.app/",
+    ],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    // credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 
