@@ -27,6 +27,7 @@ exports.single_image_get = asyncHandler(async (req, res, next) => {
 
 // POST character guess
 exports.character_guess_post = asyncHandler(async (req, res, next) => {
+  res.json({ message: "hey there" }).statusCode(200).send();
   // get info from request
   const imageToGet = req.params.imageName;
   const character = req.body.character;
