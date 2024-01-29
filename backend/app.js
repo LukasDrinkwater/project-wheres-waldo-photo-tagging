@@ -25,32 +25,36 @@ console.log(mongoose.connection.readyState);
 // Middleware setup
 app.use(logger("dev"));
 app.use(express.json());
-// app.use(cors());
-// CORS middleware
-const allowCrossDomain = (req, res, next) => {
-  res.header(`Access-Control-Allow-Origin`, `*`);
-  res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
-  res.header(`Access-Control-Allow-Headers`, `Content-Type`);
-  res.header("your-mum", "toby");
-  next();
+const corsOptions = {
+  origin: "*",
+  optionSuccessStatus: 200,
 };
+app.use(cors(corsOptions));
+// CORS middleware
+// const allowCrossDomain = (req, res, next) => {
+//   res.setHeader(`Access-Control-Allow-Origin`, `*`);
+//   res.setHeader(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
+//   res.setHeader(`Access-Control-Allow-Headers`, `Content-Type`);
+//   res.setHeader("your-mum", "toby");
+//   next();
+// };
 
-app.use(allowCrossDomain);
+// app.use(allowCrossDomain);
 
-app.use(
-  //cors is needed to allow requests from the React front end
-  cors({
-    // origin: [
-    //   "http://localhost:5173",
-    //   "https://poetic-alfajores-d4b387.netlify.app",
-    //   "https://poetic-alfajores-d4b387.netlify.app/",
-    // ],
-    // origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    // credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+// app.use(
+//cors is needed to allow requests from the React front end
+// cors({
+// origin: [
+//   "http://localhost:5173",
+//   "https://poetic-alfajores-d4b387.netlify.app",
+//   "https://poetic-alfajores-d4b387.netlify.app/",
+// ],
+// origin: "*",
+// methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+// credentials: true,
+// allowedHeaders: ["Content-Type", "Authorization"],
+// })
+// );
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 // app.use()
