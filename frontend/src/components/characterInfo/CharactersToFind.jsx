@@ -17,7 +17,7 @@ function CharactersToFind({ characterStatus, setCharacterStatus }) {
         <div className={`character ${characterStatus.wenda ? "found" : ""}`}>
           <img
             // src="http://localhost:3000/images/wenda.png"
-            src={`${baseImageUrl}/images/waldo.png`}
+            src={`${baseImageUrl}/images/wenda.png`}
             alt="Drawing of the character Wenda"
           />
           <p>Wenda</p>
@@ -33,7 +33,7 @@ function CharactersToFind({ characterStatus, setCharacterStatus }) {
         <div className={`character ${characterStatus.odlaw ? "found" : ""}`}>
           <img
             // src="http://localhost:3000/images/odlaw.png"
-            src={`${baseImageUrl}/images/waldo.png`}
+            src={`${baseImageUrl}/images/odlaw.png`}
             alt="Drawing of the character Odlaw"
           />
           <p>Odlaw</p>
