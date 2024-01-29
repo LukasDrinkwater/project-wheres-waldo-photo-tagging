@@ -32,7 +32,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://poetic-alfajores-d4b387.netlify.app/",
+      "https://poetic-alfajores-d4b387.netlify.app",
     ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
