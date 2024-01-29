@@ -77,7 +77,7 @@ function ImageComponent({ characterStatus, setCharacterStatus }) {
     <>
       <div className="wheresWaldoImage" onClick={handleClick}>
         <img
-          src={`${baseImageUrl}whereswaldo2.png`}
+          src={`${baseImageUrl}/images/whereswaldo2.png`}
           alt="image of a wheres waldo game"
         />
 
