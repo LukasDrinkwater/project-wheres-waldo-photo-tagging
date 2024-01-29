@@ -39,7 +39,7 @@ function CharacterSelect({
           }),
         }
       );
-
+      console.log(response);
       if (response.ok) {
         console.log("response from guess received");
         const data = await response.json();

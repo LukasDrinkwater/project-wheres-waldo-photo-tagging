@@ -36,7 +36,7 @@ app.use(
     ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "*"],
   })
 );
 app.use(express.urlencoded({ extended: false }));
