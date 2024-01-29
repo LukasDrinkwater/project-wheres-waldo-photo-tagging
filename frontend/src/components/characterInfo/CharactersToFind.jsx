@@ -10,28 +10,31 @@ function CharactersToFind({ characterStatus, setCharacterStatus }) {
         <div className={`character ${characterStatus.waldo ? "found" : ""}`}>
           <img
             src={`${baseImageUrl}/waldo.png`}
-            alt="Drawing of the character Wally"
+            alt="Drawing of the character Waldo"
           />
           <p>Waldo</p>
         </div>
         <div className={`character ${characterStatus.wenda ? "found" : ""}`}>
           <img
-            src="http://localhost:3000/images/wenda.png"
-            alt="Drawing of the character Wally"
+            // src="http://localhost:3000/images/wenda.png"
+            src={`${baseImageUrl}/waldo.png`}
+            alt="Drawing of the character Wenda"
           />
           <p>Wenda</p>
         </div>
         <div className={`character ${characterStatus.wizzard ? "found" : ""}`}>
           <img
-            src="http://localhost:3000/images/wizzard.png"
-            alt="Drawing of the character Wally"
+            // src="http://localhost:3000/images/wizzard.png"
+            src={`${baseImageUrl}/wizzard.png`}
+            alt="Drawing of the character Wizzard"
           />
           <p>Wizzard</p>
         </div>
         <div className={`character ${characterStatus.odlaw ? "found" : ""}`}>
           <img
-            src="http://localhost:3000/images/odlaw.png"
-            alt="Drawing of the character Wally"
+            // src="http://localhost:3000/images/odlaw.png"
+            src={`${baseImageUrl}/waldo.png`}
+            alt="Drawing of the character Odlaw"
           />
           <p>Odlaw</p>
         </div>
