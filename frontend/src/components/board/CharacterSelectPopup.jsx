@@ -25,8 +25,8 @@ function CharacterSelect({
         // `http://localhost:3000/image/${imageName}/characterPick`,
         `${baseUrl}image/${imageName}/characterPick`,
         {
-          // mode: "cors",
-          credentials: "include",
+          mode: "cors",
+          // credentials: "include",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
