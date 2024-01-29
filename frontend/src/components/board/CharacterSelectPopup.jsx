@@ -20,9 +20,10 @@ function CharacterSelect({
     const character = e.target.textContent;
 
     try {
+      console.log(`${baseUrl}image/${imageName}/characterPick`);
       const response = await fetch(
         // `http://localhost:3000/image/${imageName}/characterPick`,
-        `${baseUrl}/image/${imageName}/characterPick`,
+        `${baseUrl}image/${imageName}/characterPick`,
         {
           mode: "cors",
           method: "POST",
