@@ -35,7 +35,7 @@ app.use(
       "https://poetic-alfajores-d4b387.netlify.app",
     ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    // credentials: true,
+    credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
