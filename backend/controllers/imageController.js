@@ -61,6 +61,11 @@ exports.character_guess_post = asyncHandler(async (req, res, next) => {
     }
 
     console.log("character found");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
     res.json({ message: "found" }).sendStatus(200);
   } else {
     console.log("not found");
