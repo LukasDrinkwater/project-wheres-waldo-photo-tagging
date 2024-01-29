@@ -47,31 +47,31 @@ function ImageComponent({ characterStatus, setCharacterStatus }) {
   };
 
   // API request to get the image
-  useEffect(() => {
-    const getWheresWaldoImage = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:3000/image/whereswaldo2.png`,
-          {
-            // credentials: "include",
-            method: "GET",
-            mode: "cors",
-            // headers: {
-            // "Content-Type": "application/json",
-            // },
-          }
-        );
+  // useEffect(() => {
+  //   const getWheresWaldoImage = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `http://localhost:3000/image/whereswaldo2.png`,
+  //         {
+  //           credentials: "include",
+  //           method: "GET",
+  //           mode: "cors",
+  //           // headers: {
+  //           // "Content-Type": "application/json",
+  //           // },
+  //         }
+  //       );
 
-        if (response.ok) {
-          const data = await response.json();
-          setWheresWaldoImage(data.imageUrl);
-        }
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-    getWheresWaldoImage();
-  }, []);
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setWheresWaldoImage(data.imageUrl);
+  //       }
+  //     } catch (error) {
+  //       setError(error.message);
+  //     }
+  //   };
+  //   getWheresWaldoImage();
+  // }, []);
 
   return (
     <>
