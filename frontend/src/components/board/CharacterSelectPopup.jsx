@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { getBaseImageUrl } from "../../utils.jsx";
 
 const imageName = "whereswaldo2.png";
+const baseUrl = getBaseImageUrl();
 
 function CharacterSelect({
   userPixelPercentPosition,
@@ -19,8 +21,8 @@ function CharacterSelect({
 
     try {
       const response = await fetch(
-        // http://localhost:3000/image/whereswaldo2.png
-        `http://localhost:3000/image/${imageName}/characterPick`,
+        // `http://localhost:3000/image/${imageName}/characterPick`,
+        `${baseUrl}/image/${imageName}/characterPick`,
         {
           mode: "cors",
           method: "POST",
