@@ -6,7 +6,7 @@ import { getBaseImageUrl } from "../../utils.jsx";
 import Popup from "./Popup";
 
 function ImageComponent({ characterStatus, setCharacterStatus }) {
-  const baseImageUrl = getBaseImageUrl();
+  const baseUrl = getBaseImageUrl();
   const [showPopup, setShowPopup] = useState(false);
   // cursorPosition for location of popup
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -77,7 +77,7 @@ function ImageComponent({ characterStatus, setCharacterStatus }) {
     <>
       <div className="wheresWaldoImage" onClick={handleClick}>
         <img
-          src={`${baseImageUrl}/images/whereswaldo2.png`}
+          src={`${baseUrl}/images/whereswaldo2.png`}
           alt="image of a wheres waldo game"
         />
 
