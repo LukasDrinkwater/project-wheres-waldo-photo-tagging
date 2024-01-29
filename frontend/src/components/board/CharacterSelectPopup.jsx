@@ -40,6 +40,7 @@ function CharacterSelect({
       );
 
       if (response.ok) {
+        console.log("response from guess received");
         const data = await response.json();
         if (data.message === "found") {
           // character found, update character to found in local
