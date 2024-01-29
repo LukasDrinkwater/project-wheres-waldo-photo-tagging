@@ -25,7 +25,6 @@ console.log(mongoose.connection.readyState);
 // Middleware setup
 app.use(logger("dev"));
 app.use(express.json());
-app.use(cookieParser());
 
 app.use(
   //cors is needed to allow requests from the React front end
